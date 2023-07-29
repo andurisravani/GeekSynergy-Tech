@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // If you're using React Router
+import NavigationBar from './Components/NavigationBar';
+import Dashboard from './Components/Dashboard';
+import About from './Components/About';
+import UserLogin from './Components/Register/UserLogin';
+import UserRegistration from './Components/Register/UserRegistration';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavigationBar />
+      <Routes>
+        <Route exact path="/" element={<UserLogin />} />
+        <Route exact path="/signup" element={<UserRegistration />} />
+
+        <Route exact path="/dasboard" element={<Dashboard />} />
+        <Route exact path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
+
+// src/App.js
+// import React from 'react';
+// import UserRegistration from './Components/Register/UserRegistration';
+// import UserLogin from './Components/Register/UserLogin';
+
+// const App = () => {
+//   return (
+//     <div>
+//       <UserRegistration />
+//       <UserLogin />
+//     </div>
+//   );
+// };
+
+// export default App;
